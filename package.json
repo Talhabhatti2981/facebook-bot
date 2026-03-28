@@ -1,0 +1,43 @@
+{
+  "name": "dental-lead-bot",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "description": "Facebook Lead Generation Bot for Dental Billing Services - Automated lead scraping, tracking, and notification system",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "pm2:start": "pm2 start ecosystem.config.js",
+    "pm2:stop": "pm2 stop dental-lead-bot",
+    "pm2:restart": "pm2 restart dental-lead-bot",
+    "pm2:logs": "pm2 logs dental-lead-bot",
+    "pm2:delete": "pm2 delete dental-lead-bot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "facebook",
+    "web-scraping",
+    "lead-generation",
+    "automation",
+    "bot",
+    "dental",
+    "billing"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "google-auth-library": "^9.6.3",
+    "googleapis": "^140.0.0",
+    "node-telegram-bot-api": "^0.64.0",
+    "openai": "^4.52.0",
+    "playwright": "^1.45.0",
+    "pm2": "^5.4.2",
+    "winston": "^3.15.0",
+    "winston-daily-rotate-file": "^5.0.0",
+    "xlsx": "^0.18.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
