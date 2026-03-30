@@ -116,6 +116,56 @@ module.exports = {
       max_restarts: 5,
       kill_timeout: 5000,
     },
+    {
+      // Worker 4 - Reply Detection and Alerts
+      name: 'worker-4-replies',
+      script: './src/workers/worker4/index.js',
+      instances: 1,
+      exec_mode: 'fork',
+      autorestart: true,
+      max_memory_restart: '1G',
+      
+      // Cron schedule: 9:00 AM, 11:00 AM, 1:00 PM, 3:00 PM, 5:00 PM, 8:00 PM
+      // Running multiple times per day for continuous monitoring
+      cron_restart: '0 9,11,13,15,17,20 * * *',
+      
+      env: {
+        NODE_ENV: 'production',
+      },
+      
+      out_file: './logs/worker-4.log',
+      error_file: './logs/worker-4-error.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      
+      min_uptime: '10s',
+      max_restarts: 5,
+      kill_timeout: 5000,
+    },
+    {
+      // Worker 5 - Booking Management
+      name: 'worker-5-bookings',
+      script: './src/workers/worker5/index.js',
+      instances: 1,
+      exec_mode: 'fork',
+      autorestart: true,
+      max_memory_restart: '1G',
+      
+      // Keep running continuously to check for reminders and post-call follow ups
+      // PM2 will restart it if it crashes
+      watch: false,
+      
+      env: {
+        NODE_ENV: 'production',
+      },
+      
+      out_file: './logs/worker-5.log',
+      error_file: './logs/worker-5-error.log',
+      log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
+      
+      min_uptime: '10s',
+      max_restarts: 5,
+      kill_timeout: 5000,
+    },
   ],
 
   // Deploy configuration (optional, for deployment automation)
