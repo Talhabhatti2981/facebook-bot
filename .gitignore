@@ -1,6 +1,4 @@
 node_modules/
-.env
-.env.local
 .env.*.local
 dist/
 build/
@@ -9,7 +7,6 @@ logs/
 data/*.xlsx
 data/*.csv
 .DS_Store
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -19,3 +16,8 @@ data/*.csv
 package-lock.json
 yarn.lock
 .yarn/
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
+branch_structure.json
+config.bat
