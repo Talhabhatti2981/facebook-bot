@@ -17,6 +17,8 @@
  * 8. Error alerts for any issues
  */
 
+require('dotenv').config();
+const http = require('http');
 const config = require('../config/config');
 const { info, error, warn, logAction } = require('./utils/logger');
 const { monitorFacebookGroup, testConnection: testFacebookConnection, closeBrowser } = require('./browser/facebook');
@@ -25,6 +27,25 @@ const gpt = require('./ai/gpt');
 const excel = require('./storage/excel');
 const { scrapeProfile, findPracticeWebsite, extractContactInfo } = require('./browser/scraper');
 const telegram = require('./notifications/telegram');
+
+// ===== Pure Node.js HTTP Server for Bot =====
+const PORT = 3000;
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/') {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end('Bot is live!');
+  } else {
+    res.writeHead(404, {'Content-Type': 'text/plain'});
+    res.end('Not Found');
+  }
+});
+
+// Listen on port 3000, bind to 0.0.0.0 for external access
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`✓ Bot server is running on port ${PORT}`);
+  console.log(`✓ Server is accessible externally at 0.0.0.0:${PORT}`);
+});
 
 // Global tracking
 let cycleCount = 0;

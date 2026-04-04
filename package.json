@@ -5,8 +5,8 @@
   "description": "Facebook Lead Generation Bot for Dental Billing Services - Automated lead scraping, tracking, and notification system",
   "main": "src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "dev": "node --watch src/index.js",
+    "start": "node init && node src/index.js",
+    "dev": "node init && node --watch src/index.js",
     "pm2:start": "pm2 start ecosystem.config.js",
     "pm2:stop": "pm2 stop dental-lead-bot",
     "pm2:restart": "pm2 restart dental-lead-bot",
